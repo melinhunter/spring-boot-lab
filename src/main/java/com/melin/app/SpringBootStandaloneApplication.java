@@ -1,20 +1,25 @@
-package com.melin.app.run3;
+package com.melin.app;
 
+import com.melin.lambda.StringFun;
 import com.melin.service.DefaultHelloService;
 import com.melin.service.HelloService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Lazy;
+
 
 import java.lang.invoke.MethodHandles;
 
 @SpringBootApplication
-public class SpringBootStandalone4Application implements CommandLineRunner {
+public class SpringBootStandaloneApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
-        System.out.println(getClassName());
-        getHelloService4().hello();
+        String className1 =  getClassName();
+        StringFun strf = () -> "TEST";
+        System.out.println(strf.getString());
+        StringFun classnamef = ()->MethodHandles.lookup().lookupClass().getName();
+        System.out.println(classnamef);
+        getHelloService().hello();
     }
 
     public String getClassName(){
@@ -22,7 +27,7 @@ public class SpringBootStandalone4Application implements CommandLineRunner {
     }
 
     @Bean
-    public HelloService getHelloService4(){
+    public HelloService getHelloService(){
         return  new DefaultHelloService();
     }
 }
