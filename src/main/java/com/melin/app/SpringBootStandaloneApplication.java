@@ -18,7 +18,7 @@ public class SpringBootStandaloneApplication implements CommandLineRunner {
         StringFun strf = () -> "TEST";
         System.out.println(strf.getString());
         StringFun classnamef = ()->MethodHandles.lookup().lookupClass().getName();
-        System.out.println(classnamef);
+        System.out.println(classnamef.getString());
         getHelloService().hello();
     }
 
