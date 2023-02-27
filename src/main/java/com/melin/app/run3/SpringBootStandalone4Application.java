@@ -7,18 +7,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 
+import java.lang.invoke.MethodHandles;
+
 @SpringBootApplication
-public class SpringBootStandalone3Application implements CommandLineRunner {
+public class SpringBootStandalone4Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("SpringBootStandalone3Application");
-        getHelloService3().hello();
+        System.out.println(getClassName());
+        getHelloService4().hello();
     }
 
-
+    public String getClassName(){
+        return MethodHandles.lookup().lookupClass().getName();
+    }
 
     @Bean
-    public HelloService getHelloService3(){
+    public HelloService getHelloService4(){
         return  new DefaultHelloService();
     }
 }
